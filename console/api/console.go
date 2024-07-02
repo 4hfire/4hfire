@@ -24,7 +24,11 @@ func main() {
 
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
-	server := rest.MustNewServer(c.RestConf)
+	server := rest.MustNewServer(c.RestConf, rest.WithCustomCors(func(h http.Header) {
+		h.Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE")
+		h.Set("Access-Control-Allow-Headers", "lang,Content-Type, Authorization, X-Requested-With, server,batoken")
+		h.Set("Access-Control-Allow-Credentials", "true")
+	}, nil, "*"))
 	defer server.Stop()
 	webHandler := WrapHandler(http.FileServer(http.FS(getFS(c.RestConf.Mode == service.DevMode))))
 
@@ -76,4 +80,8 @@ func WrapHandler(h http.Handler) http.HandlerFunc {
 		fmt.Println(r.URL)
 		h.ServeHTTP(w, r)
 	}
+}
+
+func notAllowedFn(w http.ResponseWriter) {
+	w.Header().Add("Access-Control-Allow-Headers", "Batoken")
 }
