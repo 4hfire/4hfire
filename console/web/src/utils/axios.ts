@@ -25,8 +25,8 @@ const loadingInstance: LoadingInstance = {
 export const getUrl = (): string => {
     // const value: string = import.meta.env.VITE_AXIOS_BASE_URL as string
     // return value == 'getCurrentDomain' ? window.location.protocol + '//' + window.location.host : value
-    return  window.location.protocol + '//' + window.location.host+"/api/v1/console/"
-    // return  window.location.protocol + '//' + window.location.host.replace(window.location.port,"24397")+"/api/v1/console/"
+    // return  window.location.protocol + '//' + window.location.host+"/api/v1/console/"
+    return  window.location.protocol + '//' + window.location.host.replace(window.location.port,"24397")+"/api/v1/console/"
 }
 
 /**
