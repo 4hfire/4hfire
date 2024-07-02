@@ -9,10 +9,10 @@ type (
         AutoInstall bool `json:"autoInstall"` // 自动安装
 
         IP string `json:"ip"` // 主机IP
-        Port string `json:"port"` // SSH端口
+        Port int `json:"port"` // SSH端口
 
         CertId uint64 `json:"certId"` // 凭证ID
-        Type uint8 `json:"type"`
+        Type uint64 `json:"type"`
         Account string `json:"account"` // SSH 账号
         Password string `json:"password"` // SSH 密码
         Secret string `json:"secret"` // SSH 私钥
@@ -58,7 +58,7 @@ type (
         Name string `json:"name,optional"`    //名称
         Desc string `json:"desc"` // 备注
         Address  string `json:"ip"`
-        State uint8 `json:"state"`
+        State uint64 `json:"state"`
         CPU string `json:"cpu"`
         Mem string `json:"mem"`
         LastUploadAt int64 `json:"lastUploadAt"`

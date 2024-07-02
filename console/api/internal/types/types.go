@@ -166,9 +166,9 @@ type AdminUserListRes struct {
 }
 
 type CertAddReq struct {
-	Name     string `json:"name"`  // 凭证名称 唯一
-	Desc     string `json:"desc"`  // 凭证备注
-	Type     uint8  `json:"type" ` // 类型
+	Name     string `json:"name"` // 凭证名称 唯一
+	Desc     string `json:"desc"` // 凭证备注
+	Type     uint64 `json:"type"` // 类型
 	Account  string `json:"account"`
 	Password string `json:"password"`
 	Secret   string `json:"secret"`
@@ -182,7 +182,7 @@ type CertItem struct {
 	Id      uint64 `json:"id,optional"`   //凭证ID
 	Name    string `json:"name,optional"` //凭证名称
 	Desc    string `json:"desc"`          // 凭证备注
-	Type    uint8  `json:"type"`          // 凭证类型 1/2 账号密码/密钥
+	Type    uint64 `json:"type"`          // 凭证类型 1/2 账号密码/密钥
 	Account string `json:"account"`       // 账号
 	HostNum uint64 `json:"hostNum"`
 }
@@ -211,7 +211,7 @@ type CertUpdateReq struct {
 	Id       uint64 `json:"id,optional"` //凭证ID
 	Name     string `json:"name"`        // 凭证名称 唯一
 	Desc     string `json:"desc"`        // 凭证备注
-	Type     uint8  `json:"type" `       // 类型
+	Type     uint64 `json:"type"`        // 类型
 	Account  string `json:"account"`
 	Password string `json:"password"`
 	Secret   string `json:"secret"`
@@ -228,9 +228,9 @@ type HostAddReq struct {
 	Address     string   `json:"address"`
 	AutoInstall bool     `json:"autoInstall"` // 自动安装
 	IP          string   `json:"ip"`          // 主机IP
-	Port        string   `json:"port"`        // SSH端口
+	Port        int      `json:"port"`        // SSH端口
 	CertId      uint64   `json:"certId"`      // 凭证ID
-	Type        uint8    `json:"type"`
+	Type        uint64   `json:"type"`
 	Account     string   `json:"account"`  // SSH 账号
 	Password    string   `json:"password"` // SSH 密码
 	Secret      string   `json:"secret"`   // SSH 私钥
@@ -253,7 +253,7 @@ type HostItem struct {
 	Name         string `json:"name,optional"` //名称
 	Desc         string `json:"desc"`          // 备注
 	Address      string `json:"ip"`
-	State        uint8  `json:"state"`
+	State        uint64 `json:"state"`
 	CPU          string `json:"cpu"`
 	Mem          string `json:"mem"`
 	LastUploadAt int64  `json:"lastUploadAt"`
@@ -317,7 +317,7 @@ type RuleAddReq struct {
 	Option    string   `json:"option"` // 操作 accept/drop
 	Enable    bool     `json:"enable"` // 启用
 	Desc      string   `json:"desc"`   // 描述
-	Name      string   `json:"desc"`   // 描述
+	Name      string   `json:"name"`   // 名称
 }
 
 type RuleDeleteReq struct {
@@ -373,9 +373,9 @@ type RuleItem struct {
 	Id        uint64   `json:"id,optional"`   //规则ID
 	Name      string   `json:"name,optional"` //规则名称
 	GroupId   uint64   `json:"groupId"`
-	GroupName string   `json:"name,optional"` //规则名称
-	Enable    bool     `json:"enable"`        // 启用
-	Interface string   `json:"interface"`     // 网卡
+	GroupName string   `json:"groupName,optional"` //规则名称
+	Enable    bool     `json:"enable"`             // 启用
+	Interface string   `json:"interface"`          // 网卡
 	SIP       string   `json:"sip"`
 	SPort     string   `json:"sport"`
 	DIP       string   `json:"dip"`
@@ -408,7 +408,7 @@ type RuleUpdateReq struct {
 	Option    string   `json:"option"` // 操作 accept/drop
 	Enable    bool     `json:"enable"` // 启用
 	Desc      string   `json:"desc"`   // 描述
-	Name      string   `json:"desc"`   // 描述
+	Name      string   `json:"name"`   // 名称
 }
 
 type SaveOTPReq struct {

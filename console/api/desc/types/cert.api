@@ -4,7 +4,7 @@ type(
     CertAddReq {
         Name string `json:"name"` // 凭证名称 唯一
         Desc string `json:"desc"` // 凭证备注
-        Type uint8 `json:"type" `// 类型
+        Type uint64 `json:"type"`// 类型
         Account string `json:"account"`
         Password string `json:"password"`
         Secret string `json:"secret"`
@@ -16,7 +16,7 @@ type(
         Id uint64  `json:"id,optional"`    //凭证ID
         Name string `json:"name"` // 凭证名称 唯一
         Desc string `json:"desc"` // 凭证备注
-        Type uint8 `json:"type" `// 类型
+        Type uint64 `json:"type"`// 类型
         Account string `json:"account"`
         Password string `json:"password"`
         Secret string `json:"secret"`
@@ -42,7 +42,7 @@ type (
         Id uint64  `json:"id,optional"`    //凭证ID
         Name string `json:"name,optional"`    //凭证名称
         Desc string `json:"desc"` // 凭证备注
-        Type uint8 `json:"type"` // 凭证类型 1/2 账号密码/密钥
+        Type uint64 `json:"type"` // 凭证类型 1/2 账号密码/密钥
         Account string `json:"account"` // 账号
         HostNum uint64 `json:"hostNum"`
     }

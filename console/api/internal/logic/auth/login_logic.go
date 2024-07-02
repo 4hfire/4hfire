@@ -84,6 +84,7 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 
 	//	生成新的token
 	payload := make(jwt.Payload)
+	payload["id"] = admin.Id
 	payload["uid"] = admin.Uid
 	payload["account"] = admin.Account
 	if err != nil {

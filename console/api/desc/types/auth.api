@@ -8,6 +8,11 @@ type (
 	}
 
 	LoginResp {
+		ID            uint64 `json:"id"`
+		Name          string `json:"nickname"`
+		Username      string `json:"username"`
+		Avatar        string `json:"avatar"`
+		LastLoginTime string `json:"last_login_time"`
 		Token string `json:"token"` // 登录令牌
 	}
 )

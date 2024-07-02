@@ -6,8 +6,10 @@ require (
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/mssola/useragent v1.0.0
+	github.com/pkg/sftp v1.13.6
 	github.com/satori/go.uuid v1.2.0
 	github.com/zeromicro/go-zero v1.6.5
+	golang.org/x/crypto v0.23.0
 	google.golang.org/grpc v1.63.2
 )
 
@@ -23,6 +25,7 @@ require (
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.18.0 // indirect
+	github.com/kr/fs v0.1.0 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

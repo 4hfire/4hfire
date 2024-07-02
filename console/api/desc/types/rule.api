@@ -12,7 +12,7 @@ type (
         Option string `json:"option"` // 操作 accept/drop
         Enable bool `json:"enable"` // 启用
         Desc string `json:"desc"` // 描述
-        Name string `json:"desc"` // 描述
+        Name string `json:"name"` // 名称
     }
 )
 type (
@@ -28,7 +28,7 @@ type (
         Option string `json:"option"` // 操作 accept/drop
         Enable bool `json:"enable"` // 启用
         Desc string `json:"desc"` // 描述
-        Name string `json:"desc"` // 描述
+        Name string `json:"name"` // 名称
     }
 )
 type (
@@ -52,7 +52,7 @@ type (
         Id uint64  `json:"id,optional"`    //规则ID
         Name string `json:"name,optional"`    //规则名称
         GroupId uint64 `json:"groupId"`
-        GroupName string `json:"name,optional"`    //规则名称
+        GroupName string `json:"groupName,optional"`    //规则名称
         Enable bool `json:"enable"` // 启用
         Interface string `json:"interface"` // 网卡
         SIP string `json:"sip"`

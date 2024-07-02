@@ -54,7 +54,7 @@ func (l *ListLogic) List(req *types.HostListReq) (resp *types.HostListResp, err 
 			CPU:          v.Cpu,
 			Mem:          v.Mem,
 			LastUploadAt: v.UpdatedAt,
-			State:        uint8(v.State),
+			State:        v.State,
 		}
 		resp.List = append(resp.List, itme)
 	}

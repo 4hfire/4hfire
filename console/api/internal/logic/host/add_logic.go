@@ -2,6 +2,7 @@ package host
 
 import (
 	"4hfire/common/errors"
+	"4hfire/common/installer"
 	"4hfire/common/utils"
 	"4hfire/model"
 	"context"
@@ -67,6 +68,16 @@ func (l *AddLogic) Add(req *types.HostAddReq) error {
 				(req.Type == 2 && len(req.Secret) == 0)) {
 				return errors.ParamsError()
 			}
+		} else if req.CertId != 0 {
+			cert, err := l.svcCtx.CertsModel.FindOne(l.ctx, req.CertId)
+			if err != nil {
+				logx.Error(err)
+				err = errors.DbError()
+				return err
+			}
+			req.Account = cert.Account
+			req.Password = cert.Password
+			req.Secret = cert.Secret
 		}
 		cert := &model.Certs{
 			Name:     req.Name + "主机(自动同步)",
@@ -74,7 +85,7 @@ func (l *AddLogic) Add(req *types.HostAddReq) error {
 			Account:  req.Account,
 			Password: req.Password,
 			Secret:   req.Secret,
-			Type:     uint64(req.Type),
+			Type:     req.Type,
 		}
 		err := l.svcCtx.MysqlConn.TransactCtx(l.ctx, func(ctx context.Context, s sqlx.Session) error {
 			if req.CertId == 0 && req.AutoCert {
@@ -85,7 +96,7 @@ func (l *AddLogic) Add(req *types.HostAddReq) error {
 				}
 				req.CertId = uint64(res)
 			}
-			hc := &model.HostCerts{CertId: req.CertId, Account: req.Account, Password: req.Password, Secret: req.Secret, Type: uint64(req.Type)}
+			hc := &model.HostCerts{CertId: req.CertId, Account: req.Account, Password: req.Password, Secret: req.Secret, Type: req.Type}
 			res, err := l.svcCtx.HostsModel.InsertSession(l.ctx, data, s)
 			if err != nil {
 				logx.Error(err)
@@ -101,6 +112,29 @@ func (l *AddLogic) Add(req *types.HostAddReq) error {
 		}
 
 		// todo：实现SSH远程进入服务器执行安装命令
+
+		install := installer.NewInstaller()
+		err = install.Login(&installer.Credentials{
+			Host:       req.IP,
+			Port:       req.Port,
+			Username:   req.Account,
+			Password:   req.Password,
+			PrivateKey: req.Secret,
+			Passphrase: req.Password,
+		})
+		if err != nil {
+			err = errors.DiyError("资产连接失败")
+			return err
+		}
+		err = install.Install(map[string]string{
+			"endpoint": l.svcCtx.Config.Host,
+			"nodeId":   data.Uuid,
+			"secret":   data.Secret,
+		})
+		if err != nil {
+			err = errors.DiyError(err.Error())
+			return err
+		}
 	} else {
 		_, err := l.svcCtx.HostsModel.Insert(l.ctx, data)
 		if err != nil {

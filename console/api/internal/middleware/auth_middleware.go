@@ -40,19 +40,19 @@ func (m *AuthMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
-		name, ok := payload["name"].(string)
+		id, ok := payload["id"].(uint64)
 		if !ok {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
-		device, ok := payload["device"].(string)
+		uid, ok := payload["uid"].(string)
 		if !ok {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 		ctx := context.WithValue(reqCtx, "account", account)
-		ctx = context.WithValue(ctx, "name", name)
-		ctx = context.WithValue(ctx, "device", device)
+		ctx = context.WithValue(ctx, "name", id)
+		ctx = context.WithValue(ctx, "uid", uid)
 		val := r.Header.Get("User-Agent")
 		ua := useragent.New(val)
 		ctx = context.WithValue(ctx, "os", ua.OS())

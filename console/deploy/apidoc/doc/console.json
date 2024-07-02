@@ -1,0 +1,2801 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "控制台",
+    "description": "控制台",
+    "version": "v1.0.0"
+  },
+  "host": "192.168.31.32:24397",
+  "basePath": "/api/v1/console",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "api/v1/console/auth/info": {
+      "get": {
+        "summary": "用户详情",
+        "operationId": "info",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminInfoResp"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "api/v1/console/auth/login": {
+      "post": {
+        "summary": "登录",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "api/v1/console/auth/logout": {
+      "get": {
+        "summary": "用户退出",
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "api/v1/console/auth/otpState": {
+      "get": {
+        "summary": "otp开启状态",
+        "operationId": "otpState",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OTPStateResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "api/v1/console/cert/add": {
+      "post": {
+        "summary": "新增凭证",
+        "operationId": "add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CertAddReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "cert"
+        ]
+      }
+    },
+    "api/v1/console/cert/delete": {
+      "delete": {
+        "summary": "删除凭证",
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CertDeleteReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "cert"
+        ]
+      }
+    },
+    "api/v1/console/cert/list": {
+      "get": {
+        "summary": "凭证列表",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CertListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": " 当前页",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": " 查询大小",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "description": " 凭证名称",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "cert"
+        ]
+      }
+    },
+    "api/v1/console/cert/option": {
+      "get": {
+        "summary": "凭证下拉框",
+        "operationId": "option",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CertOptionResp"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "cert"
+        ]
+      }
+    },
+    "api/v1/console/cert/update": {
+      "post": {
+        "summary": "修改凭证",
+        "operationId": "update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CertUpdateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "cert"
+        ]
+      }
+    },
+    "api/v1/console/host/add": {
+      "post": {
+        "summary": "新增主机",
+        "operationId": "add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HostAddReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "host"
+        ]
+      }
+    },
+    "api/v1/console/host/delete": {
+      "delete": {
+        "summary": "删除主机",
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HostDeleteReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "host"
+        ]
+      }
+    },
+    "api/v1/console/host/list": {
+      "get": {
+        "summary": "主机列表",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/HostListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": " 当前页",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": " 查询大小",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "description": " 名称",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "description": " ip",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "host"
+        ]
+      }
+    },
+    "api/v1/console/host/update": {
+      "post": {
+        "summary": "修改主机",
+        "operationId": "update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HostUpdateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "host"
+        ]
+      }
+    },
+    "api/v1/console/rule/add": {
+      "post": {
+        "summary": "新增规则",
+        "operationId": "add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleAddReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "rule"
+        ]
+      }
+    },
+    "api/v1/console/rule/delete": {
+      "delete": {
+        "summary": "删除规则",
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleDeleteReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "rule"
+        ]
+      }
+    },
+    "api/v1/console/rule/group/add": {
+      "post": {
+        "summary": "新增规则分组",
+        "operationId": "add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleGroupAddReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "api/v1/console/rule/group/delete": {
+      "delete": {
+        "summary": "删除规则分组",
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleGroupDeleteReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "api/v1/console/rule/group/list": {
+      "get": {
+        "summary": "规则分组列表",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RuleGroupListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": " 当前页",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": " 查询大小",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "description": " 规则分组名称",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "api/v1/console/rule/group/option": {
+      "get": {
+        "summary": "规则分组下拉框",
+        "operationId": "option",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RuleGroupOptionResp"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "api/v1/console/rule/group/update": {
+      "post": {
+        "summary": "修改规则分组",
+        "operationId": "update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleGroupUpdateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "api/v1/console/rule/list": {
+      "get": {
+        "summary": "规则列表",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RuleListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": " 当前页",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": " 查询大小",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "description": " 规则名称",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "rule"
+        ]
+      }
+    },
+    "api/v1/console/rule/update": {
+      "post": {
+        "summary": "修改规则",
+        "operationId": "update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleUpdateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "rule"
+        ]
+      }
+    },
+    "api/v1/console/staff/add": {
+      "post": {
+        "summary": "管理员新增",
+        "operationId": "add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminAdduserReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/closeOTP": {
+      "post": {
+        "summary": "管理员关闭otp",
+        "operationId": "closeOTP",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CloseOTPReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/closeOTPSelf": {
+      "get": {
+        "summary": "关闭自己otp",
+        "operationId": "closeOTPSelf",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/delete": {
+      "post": {
+        "summary": "管理员删除管理账户",
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminDeleteReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/list": {
+      "get": {
+        "summary": "管理员通过账号获取管理员列表",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AdminListRes"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": " 当前页",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": " 查询大小",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "account",
+            "description": " 待查看的用户账号",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": " 用户姓名",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "description": " 用户手机号",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/openOTPInfo": {
+      "get": {
+        "summary": "管理员获取otp开启信息",
+        "operationId": "openOTPInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OpenOTPInfo"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/resetPassword": {
+      "post": {
+        "summary": "管理员修改密码",
+        "operationId": "resetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminResetPasswordReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/saveOTP": {
+      "post": {
+        "summary": "保存otp信息",
+        "operationId": "saveOTP",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SaveOTPReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/switchForbid": {
+      "get": {
+        "summary": "管理员账户切换账号禁用状态",
+        "operationId": "switchForbid",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/staff/update": {
+      "post": {
+        "summary": "管理员更新数据",
+        "operationId": "update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminUpdateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "staff"
+        ]
+      }
+    },
+    "api/v1/console/tag/add": {
+      "post": {
+        "summary": "新增标签",
+        "operationId": "add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TagAddReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "tags"
+        ]
+      }
+    },
+    "api/v1/console/tag/delete": {
+      "delete": {
+        "summary": "删除标签",
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TagDeleteReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "tags"
+        ]
+      }
+    },
+    "api/v1/console/tag/list": {
+      "get": {
+        "summary": "标签列表",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TagListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": " 当前页",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "size",
+            "description": " 查询大小",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "description": " 标签名称",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "tags"
+        ]
+      }
+    },
+    "api/v1/console/tag/option": {
+      "get": {
+        "summary": "标签下拉框",
+        "operationId": "option",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TagOptionResp"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "tags"
+        ]
+      }
+    },
+    "api/v1/console/tag/update": {
+      "post": {
+        "summary": "修改标签",
+        "operationId": "update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TagUpdateReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "tags"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AdminAdduserReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "\t姓名"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账号"
+        },
+        "password": {
+          "type": "string",
+          "description": " 用户密码"
+        },
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        }
+      },
+      "title": "AdminAdduserReq",
+      "required": [
+        "name",
+        "account",
+        "password",
+        "email"
+      ]
+    },
+    "AdminByPhonesGetUserReq": {
+      "type": "object",
+      "properties": {
+        "phones": {
+          "type": "string",
+          "description": "\t用户phone"
+        }
+      },
+      "title": "AdminByPhonesGetUserReq",
+      "required": [
+        "phones"
+      ]
+    },
+    "AdminByPhonesGetUserResp": {
+      "type": "object",
+      "properties": {
+        "phones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "\t用户phone"
+        }
+      },
+      "title": "AdminByPhonesGetUserResp",
+      "required": [
+        "phones"
+      ]
+    },
+    "AdminByUidsGetUserReq": {
+      "type": "object",
+      "properties": {
+        "uids": {
+          "type": "string",
+          "description": "用户uid，"
+        }
+      },
+      "title": "AdminByUidsGetUserReq",
+      "required": [
+        "uids"
+      ]
+    },
+    "AdminByUidsGetUserResp": {
+      "type": "object",
+      "properties": {
+        "uids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "用户uid，"
+        }
+      },
+      "title": "AdminByUidsGetUserResp",
+      "required": [
+        "uids"
+      ]
+    },
+    "AdminDeleteReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        }
+      },
+      "title": "AdminDeleteReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "AdminDeleteUserReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 删除用户id"
+        }
+      },
+      "title": "AdminDeleteUserReq"
+    },
+    "AdminDownImage": {
+      "type": "object",
+      "properties": {
+        "imagePath": {
+          "type": "string",
+          "description": "下载图片路径"
+        }
+      },
+      "title": "AdminDownImage"
+    },
+    "AdminForbidReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "AdminForbidReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "AdminForbiddenReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        },
+        "actionType": {
+          "type": "integer",
+          "format": "int64",
+          "description": "是否禁用，0正常，1禁用"
+        }
+      },
+      "title": "AdminForbiddenReq"
+    },
+    "AdminGetByAccountReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": " 姓名，账号，或者手机号"
+        }
+      },
+      "title": "AdminGetByAccountReq"
+    },
+    "AdminGetByAccountRes": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账户"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册时间"
+        },
+        "isDisable": {
+          "type": "integer",
+          "format": "int64",
+          "description": "是否禁用，0正常，1禁用"
+        },
+        "updateTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        }
+      },
+      "title": "AdminGetByAccountRes",
+      "required": [
+        "primaryKey"
+      ]
+    },
+    "AdminGetUserInfoReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        }
+      },
+      "title": "AdminGetUserInfoReq"
+    },
+    "AdminGetUserInfoResp": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        },
+        "name": {
+          "type": "string",
+          "description": " 昵称"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账号/手机号/邮箱/"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像路径"
+        },
+        "loginTimes": {
+          "type": "integer",
+          "format": "int64",
+          "description": "登录次数"
+        },
+        "lastLoginTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最后登录时间"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册时间"
+        },
+        "updateTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        }
+      },
+      "title": "AdminGetUserInfoResp",
+      "required": [
+        "primaryKey",
+        "column:newAvatar"
+      ]
+    },
+    "AdminInfoResp": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "姓名"
+        },
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账户"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像路径"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册时间"
+        },
+        "updateTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "email": {
+          "type": "string",
+          "description": "邮箱"
+        }
+      },
+      "title": "AdminInfoResp",
+      "required": [
+        "primaryKey"
+      ]
+    },
+    "AdminItem": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        },
+        "avatar": {
+          "type": "string",
+          "description": " 头像路径"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账户"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 注册时间"
+        },
+        "isDisable": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 是否禁用，0正常，1禁用"
+        },
+        "updateTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 更新时间"
+        },
+        "email": {
+          "type": "string",
+          "description": " 邮箱"
+        },
+        "name": {
+          "type": "string",
+          "description": " 姓名"
+        },
+        "otp": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 二次验证状态 1开启 2关闭"
+        }
+      },
+      "title": "AdminItem",
+      "required": [
+        "primaryKey",
+        "otp"
+      ]
+    },
+    "AdminListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "account": {
+          "type": "string",
+          "description": " 待查看的用户账号"
+        },
+        "name": {
+          "type": "string",
+          "description": " 用户姓名"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        }
+      },
+      "title": "AdminListReq"
+    },
+    "AdminListRes": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdminItem"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "AdminListRes"
+    },
+    "AdminLoadImages": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "上传图片切片"
+        }
+      },
+      "title": "AdminLoadImages"
+    },
+    "AdminResetPasswordReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 被更新用户的id"
+        },
+        "newPassword": {
+          "type": "string",
+          "description": "新密码"
+        },
+        "reNewPassword": {
+          "type": "string",
+          "description": "确认密码"
+        }
+      },
+      "title": "AdminResetPasswordReq",
+      "required": [
+        "primaryKey",
+        "uid",
+        "newPassword",
+        "reNewPassword"
+      ]
+    },
+    "AdminUpdateReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " admin用户uid"
+        },
+        "phone": {
+          "type": "string",
+          "description": " 用户手机号"
+        },
+        "email": {
+          "type": "string",
+          "description": " 邮箱"
+        },
+        "password": {
+          "type": "string",
+          "description": " password 可选"
+        },
+        "name": {
+          "type": "string",
+          "description": "\t姓名"
+        }
+      },
+      "title": "AdminUpdateReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "AdminUserInfoReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户ID"
+        }
+      },
+      "title": "AdminUserInfoReq"
+    },
+    "AdminUserInfoRes": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": " 账号"
+        },
+        "nickname": {
+          "type": "string",
+          "description": " 用户姓名"
+        },
+        "mobile": {
+          "type": "string",
+          "description": " 手机号"
+        }
+      },
+      "title": "AdminUserInfoRes"
+    },
+    "AdminUserListItme": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": " 用户唯一ID"
+        },
+        "name": {
+          "type": "string",
+          "description": " 名称"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账号/手机号/邮箱/"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "注册时间"
+        },
+        "isDisable": {
+          "type": "integer",
+          "format": "int64",
+          "description": "是否禁用，0正常，1禁用"
+        },
+        "updateTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "更新时间"
+        }
+      },
+      "title": "AdminUserListItme",
+      "required": [
+        "name",
+        "account"
+      ]
+    },
+    "AdminUserListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "account": {
+          "type": "string",
+          "description": " 待查看的用户账号"
+        },
+        "isDisable": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 是否禁用，0正常，1禁用"
+        },
+        "startTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 注册时间范围，开始时间"
+        },
+        "endTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 注册时间范围，结束时间"
+        }
+      },
+      "title": "AdminUserListReq"
+    },
+    "AdminUserListRes": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdminUserListItme"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "AdminUserListRes"
+    },
+    "CertAddReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": " 凭证名称 唯一"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 凭证备注"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 类型"
+        },
+        "account": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        }
+      },
+      "title": "CertAddReq",
+      "required": [
+        "name",
+        "desc",
+        "type",
+        "account",
+        "password",
+        "secret"
+      ]
+    },
+    "CertDeleteReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "凭证ID"
+        }
+      },
+      "title": "CertDeleteReq"
+    },
+    "CertItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "凭证ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "凭证名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 凭证备注"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 凭证类型 1/2 账号密码/密钥"
+        },
+        "account": {
+          "type": "string",
+          "description": " 账号"
+        },
+        "hostNum": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "CertItem",
+      "required": [
+        "desc",
+        "type",
+        "account",
+        "hostNum"
+      ]
+    },
+    "CertListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "name": {
+          "type": "string",
+          "description": " 凭证名称"
+        }
+      },
+      "title": "CertListReq"
+    },
+    "CertListResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CertItem"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "CertListResp"
+    },
+    "CertOption": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "凭证ID"
+        },
+        "string": {
+          "type": "string",
+          "description": "凭证名称"
+        }
+      },
+      "title": "CertOption"
+    },
+    "CertOptionResp": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CertOption"
+          }
+        }
+      },
+      "title": "CertOptionResp",
+      "required": [
+        "item"
+      ]
+    },
+    "CertUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "凭证ID"
+        },
+        "name": {
+          "type": "string",
+          "description": " 凭证名称 唯一"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 凭证备注"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 类型"
+        },
+        "account": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        }
+      },
+      "title": "CertUpdateReq",
+      "required": [
+        "name",
+        "desc",
+        "type",
+        "account",
+        "password",
+        "secret"
+      ]
+    },
+    "CloseOTPReq": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "CloseOTPReq",
+      "required": [
+        "uid"
+      ]
+    },
+    "HostAddReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": " 主机名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 备注"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 对应标签"
+        },
+        "address": {
+          "type": "string"
+        },
+        "autoInstall": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": " 自动安装"
+        },
+        "ip": {
+          "type": "string",
+          "description": " 主机IP"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32",
+          "description": " SSH端口"
+        },
+        "certId": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 凭证ID"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "account": {
+          "type": "string",
+          "description": " SSH 账号"
+        },
+        "password": {
+          "type": "string",
+          "description": " SSH 密码"
+        },
+        "secret": {
+          "type": "string",
+          "description": " SSH 私钥"
+        },
+        "autoCert": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": " 自动同步创建凭证"
+        },
+        "notSave": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": " 不保存SSH登陆凭证信息"
+        }
+      },
+      "title": "HostAddReq",
+      "required": [
+        "name",
+        "desc",
+        "tags",
+        "address",
+        "autoInstall",
+        "ip",
+        "port",
+        "certId",
+        "type",
+        "account",
+        "password",
+        "secret",
+        "autoCert",
+        "notSave"
+      ]
+    },
+    "HostAddResp": {
+      "type": "object",
+      "properties": {
+        "consoleRpcAddr": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        }
+      },
+      "title": "HostAddResp",
+      "required": [
+        "consoleRpcAddr",
+        "uuid",
+        "secret"
+      ]
+    },
+    "HostDeleteReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "HostDeleteReq",
+      "required": [
+        "id"
+      ]
+    },
+    "HostItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 备注"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "cpu": {
+          "type": "string"
+        },
+        "mem": {
+          "type": "string"
+        },
+        "lastUploadAt": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "HostItem",
+      "required": [
+        "desc",
+        "ip",
+        "state",
+        "cpu",
+        "mem",
+        "lastUploadAt"
+      ]
+    },
+    "HostListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "name": {
+          "type": "string",
+          "description": " 名称"
+        },
+        "address": {
+          "type": "string",
+          "description": " ip"
+        }
+      },
+      "title": "HostListReq",
+      "required": [
+        "address"
+      ]
+    },
+    "HostListResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HostItem"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "HostListResp"
+    },
+    "HostUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": " 主机名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 备注"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " 对应标签"
+        },
+        "address": {
+          "type": "string"
+        }
+      },
+      "title": "HostUpdateReq",
+      "required": [
+        "id",
+        "name",
+        "desc",
+        "tags",
+        "address"
+      ]
+    },
+    "LoginReq": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": " 账号"
+        },
+        "password": {
+          "type": "string",
+          "description": " 密码"
+        },
+        "otpCode": {
+          "type": "string",
+          "description": " 二次验证码"
+        }
+      },
+      "title": "LoginReq",
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "LoginResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "last_login_time": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string",
+          "description": " 登录令牌"
+        }
+      },
+      "title": "LoginResp",
+      "required": [
+        "id",
+        "nickname",
+        "username",
+        "avatar",
+        "last_login_time",
+        "token"
+      ]
+    },
+    "OTPStateReq": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        }
+      },
+      "title": "OTPStateReq",
+      "required": [
+        "account"
+      ]
+    },
+    "OTPStateResp": {
+      "type": "object",
+      "properties": {
+        "enable": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      },
+      "title": "OTPStateResp",
+      "required": [
+        "enable"
+      ]
+    },
+    "OpenOTPInfo": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        }
+      },
+      "title": "OpenOTPInfo",
+      "required": [
+        "data"
+      ]
+    },
+    "RuleAddReq": {
+      "type": "object",
+      "properties": {
+        "groupId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "interface": {
+          "type": "string",
+          "description": " 网卡"
+        },
+        "sip": {
+          "type": "string"
+        },
+        "sport": {
+          "type": "string"
+        },
+        "dip": {
+          "type": "string"
+        },
+        "dport": {
+          "type": "string"
+        },
+        "option": {
+          "type": "string",
+          "description": " 操作 accept/drop"
+        },
+        "enable": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": " 启用"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 描述"
+        },
+        "name": {
+          "type": "string",
+          "description": " 名称"
+        }
+      },
+      "title": "RuleAddReq",
+      "required": [
+        "groupId",
+        "tags",
+        "interface",
+        "sip",
+        "sport",
+        "dip",
+        "dport",
+        "option",
+        "enable",
+        "desc",
+        "name"
+      ]
+    },
+    "RuleDeleteReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "RuleDeleteReq",
+      "required": [
+        "id"
+      ]
+    },
+    "RuleGroupAddReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": " 分组名称 唯一"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 分组备注"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "RuleGroupAddReq",
+      "required": [
+        "name",
+        "desc",
+        "tags"
+      ]
+    },
+    "RuleGroupDeleteReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "规则分组ID"
+        }
+      },
+      "title": "RuleGroupDeleteReq"
+    },
+    "RuleGroupItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "规则分组ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "规则分组名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 规则分组备注"
+        },
+        "ruleNum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 关联的规则数"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "RuleGroupItem",
+      "required": [
+        "desc",
+        "ruleNum",
+        "tags"
+      ]
+    },
+    "RuleGroupListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "name": {
+          "type": "string",
+          "description": " 规则分组名称"
+        }
+      },
+      "title": "RuleGroupListReq"
+    },
+    "RuleGroupListResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RuleGroupItem"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "RuleGroupListResp"
+    },
+    "RuleGroupOption": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "规则分组ID"
+        },
+        "string": {
+          "type": "string",
+          "description": "规则分组名称"
+        }
+      },
+      "title": "RuleGroupOption"
+    },
+    "RuleGroupOptionResp": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RuleGroupOption"
+          }
+        }
+      },
+      "title": "RuleGroupOptionResp",
+      "required": [
+        "item"
+      ]
+    },
+    "RuleGroupUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "规则分组ID"
+        },
+        "name": {
+          "type": "string",
+          "description": " 规则分组名称 唯一"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 规则分组备注"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "RuleGroupUpdateReq",
+      "required": [
+        "name",
+        "desc",
+        "tags"
+      ]
+    },
+    "RuleItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "规则ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "groupName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "enable": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": " 启用"
+        },
+        "interface": {
+          "type": "string",
+          "description": " 网卡"
+        },
+        "sip": {
+          "type": "string"
+        },
+        "sport": {
+          "type": "string"
+        },
+        "dip": {
+          "type": "string"
+        },
+        "dport": {
+          "type": "string"
+        },
+        "option": {
+          "type": "string",
+          "description": " 操作 accept/drop"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "RuleItem",
+      "required": [
+        "groupId",
+        "enable",
+        "interface",
+        "sip",
+        "sport",
+        "dip",
+        "dport",
+        "option",
+        "tags"
+      ]
+    },
+    "RuleListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "name": {
+          "type": "string",
+          "description": " 规则名称"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "RuleListReq"
+    },
+    "RuleListResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RuleItem"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "RuleListResp"
+    },
+    "RuleUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "interface": {
+          "type": "string",
+          "description": " 网卡"
+        },
+        "sip": {
+          "type": "string"
+        },
+        "sport": {
+          "type": "string"
+        },
+        "dip": {
+          "type": "string"
+        },
+        "dport": {
+          "type": "string"
+        },
+        "option": {
+          "type": "string",
+          "description": " 操作 accept/drop"
+        },
+        "enable": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": " 启用"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 描述"
+        },
+        "name": {
+          "type": "string",
+          "description": " 名称"
+        }
+      },
+      "title": "RuleUpdateReq",
+      "required": [
+        "id",
+        "groupId",
+        "tags",
+        "interface",
+        "sip",
+        "sport",
+        "dip",
+        "dport",
+        "option",
+        "enable",
+        "desc",
+        "name"
+      ]
+    },
+    "SaveOTPReq": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      },
+      "title": "SaveOTPReq",
+      "required": [
+        "code"
+      ]
+    },
+    "TagAddReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": " 标签名称 唯一"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 标签备注"
+        }
+      },
+      "title": "TagAddReq",
+      "required": [
+        "name",
+        "desc"
+      ]
+    },
+    "TagDeleteReq": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "integer",
+          "format": "int64",
+          "description": "标签ID"
+        }
+      },
+      "title": "TagDeleteReq"
+    },
+    "TagItem": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "integer",
+          "format": "int64",
+          "description": "标签ID"
+        },
+        "string": {
+          "type": "string",
+          "description": "标签名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 标签备注"
+        },
+        "hostNum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 关联的主机数"
+        },
+        "ruleNum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 关联的规则数"
+        },
+        "ruleGroupNum": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 关联的规则集数"
+        }
+      },
+      "title": "TagItem",
+      "required": [
+        "desc",
+        "hostNum",
+        "ruleNum",
+        "ruleGroupNum"
+      ]
+    },
+    "TagListReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 当前页"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 查询大小"
+        },
+        "name": {
+          "type": "string",
+          "description": " 标签名称"
+        }
+      },
+      "title": "TagListReq"
+    },
+    "TagListResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TagItem"
+          },
+          "description": " 列表"
+        }
+      },
+      "title": "TagListResp"
+    },
+    "TagOption": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "标签ID"
+        },
+        "string": {
+          "type": "string",
+          "description": "标签名称"
+        }
+      },
+      "title": "TagOption"
+    },
+    "TagOptionResp": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TagOption"
+          }
+        }
+      },
+      "title": "TagOptionResp",
+      "required": [
+        "item"
+      ]
+    },
+    "TagUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 标签ID"
+        },
+        "name": {
+          "type": "string",
+          "description": " 标签名称 唯一"
+        },
+        "desc": {
+          "type": "string",
+          "description": " 标签备注"
+        }
+      },
+      "title": "TagUpdateReq",
+      "required": [
+        "id",
+        "name",
+        "desc"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

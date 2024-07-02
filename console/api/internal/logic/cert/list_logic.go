@@ -51,7 +51,7 @@ func (l *ListLogic) List(req *types.CertListReq) (resp *types.CertListResp, err 
 			Name:    v.Name,
 			Desc:    v.Desc,
 			Account: v.Account,
-			Type:    uint8(v.Type),
+			Type:    v.Type,
 		}
 		dbConn := squirrel.Select().Where(squirrel.Eq{"groupId": v.Id})
 		itme.HostNum, err = l.svcCtx.RulesModel.Count(l.ctx, dbConn)
