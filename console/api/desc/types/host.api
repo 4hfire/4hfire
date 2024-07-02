@@ -1,0 +1,66 @@
+syntax = "v1"
+
+type (
+    HostAddReq {
+        Name string `json:"name"` // 主机名称
+        Desc string `json:"desc"` // 备注
+        Tags []uint64 `json:"tags"` // 对应标签
+        Address string `json:"address"`
+        AutoInstall bool `json:"autoInstall"` // 自动安装
+
+        IP string `json:"ip"` // 主机IP
+        Port string `json:"port"` // SSH端口
+
+        CertId uint64 `json:"certId"` // 凭证ID
+        Type uint8 `json:"type"`
+        Account string `json:"account"` // SSH 账号
+        Password string `json:"password"` // SSH 密码
+        Secret string `json:"secret"` // SSH 私钥
+        AutoCert bool `json:"autoCert"` // 自动同步创建凭证
+        NotSave bool `json:"notSave"` // 不保存SSH登陆凭证信息
+    }
+    HostAddResp {
+        ConsoleRPCAddr  string `json:"consoleRpcAddr"`
+        UUid string `json:"uuid"`
+        Secret string `json:"secret"`
+    }
+)
+
+type (
+    HostUpdateReq {
+        Id uint64 `json:"id"`
+        Name string `json:"name"` // 主机名称
+        Desc string `json:"desc"` // 备注
+        Tags []uint64 `json:"tags"` // 对应标签
+        Address string `json:"address"` //
+    }
+)
+
+type (
+    HostDeleteReq {
+        Id uint64 `json:"id"`
+    }
+)
+
+type (
+    HostListReq {
+        Page    int64   `form:"page,optional"`    // 当前页
+        Size    int64   `form:"size,optional"`    // 查询大小
+        Name    string `form:"name,optional"`    // 名称
+        Address string `json:"address"` // ip
+    }
+    HostListResp {
+        Total int64 `json:"total,optional"`     // 总数
+        List []*HostItem `json:"list,optional"`  // 列表
+    }
+    HostItem{
+        Id uint64  `json:"id,optional"`    //ID
+        Name string `json:"name,optional"`    //名称
+        Desc string `json:"desc"` // 备注
+        Address  string `json:"ip"`
+        State uint8 `json:"state"`
+        CPU string `json:"cpu"`
+        Mem string `json:"mem"`
+        LastUploadAt int64 `json:"lastUploadAt"`
+    }
+)

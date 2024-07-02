@@ -1,0 +1,50 @@
+syntax = "v1"
+
+type (
+    RuleGroupAddReq{
+        Name string `json:"name"` // 分组名称 唯一
+        Desc string `json:"desc"` // 分组备注
+        Tags []uint64 `json:"tags"`
+    }
+)
+type(
+    RuleGroupUpdateReq {
+        Id uint64  `json:"id,optional"`    //规则分组ID
+        Name string `json:"name"` // 规则分组名称 唯一
+        Desc string `json:"desc"` // 规则分组备注
+        Tags []uint64 `json:"tags"`
+    }
+)
+type(
+    RuleGroupDeleteReq {
+        Id uint64  `json:"id,optional"`    //规则分组ID
+    }
+)
+
+type (
+    RuleGroupListReq{
+        Page    int64   `form:"page,optional"`    // 当前页
+        Size    int64   `form:"size,optional"`    // 查询大小
+        Name    string `form:"name,optional"`    // 规则分组名称
+    }
+    RuleGroupListResp {
+        Total int64 `json:"total,optional"`     // 总数
+        List []*RuleGroupItem `json:"list,optional"`  // 列表
+    }
+    RuleGroupItem{
+        Id uint64  `json:"id,optional"`    //规则分组ID
+        Name string `json:"name,optional"`    //规则分组名称
+        Desc string `json:"desc"` // 规则分组备注
+        RuleNum uint64 `json:"ruleNum"` // 关联的规则数
+        Tags []uint64 `json:"tags"`
+    }
+)
+type (
+    RuleGroupOption{
+        Id uint64  `json:"id,optional"`    //规则分组ID
+        Name string `json:"string,optional"`    //规则分组名称
+    }
+    RuleGroupOptionResp {
+        Item []*RuleGroupOption `json:"item"`
+    }
+)

@@ -1,16 +1,17 @@
-## Hi there 👋
+# 4HFire(For Host Firewall) 
 
-<!--
-**4hfire/4hfire** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## 特点
 
-Here are some ideas to get you started:
+4HFire（For Host Firewall Management） 是一个简单好用安全的开源交互主机防火墙管理系统，支持Linux系统。
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+目前支持的功能有：
+
+- 主机管理
+- 资产管理（支持SSH协议）
+- 指令管理
+- 批量执行命令
+- 双因素认证
+- 资产标签
+- 资产授权
+- 系统监控
+- NAT规则管理

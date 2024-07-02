@@ -1,0 +1,234 @@
+syntax = "v1"
+
+info (
+	title:   "控制台"
+	desc:    "控制台"
+	author:  "1usir"
+	Email:   "243971996@qq.com"
+	version: "v1.0.0"
+)
+
+import "types/auth.api"
+
+//----------------- admin login -----------------
+@server (
+	prefix: api/v1/console/auth
+	group:  auth
+)
+service console-api {
+	@doc "登录"
+	@handler login
+	post /login (LoginReq) returns (LoginResp)
+
+	@doc "otp开启状态"
+	@handler otpState
+	get /otpState (OTPStateReq) returns (OTPStateResp)
+}
+
+@server (
+	prefix:     api/v1/console/auth
+	group:      auth
+	middleware: Auth
+)
+service console-api {
+	@doc "用户退出"
+	@handler logout
+	get /logout
+
+	@doc "用户详情"
+	@handler info
+	get /info returns (AdminInfoResp)
+}
+
+import "types/admin.api"
+
+//---------------- admins managements -----------
+@server (
+	prefix:     api/v1/console/staff
+	group:      staff
+	middleware: Auth
+)
+service console-api {
+	@doc "管理员新增"
+	@handler add
+	post /add (AdminAdduserReq)
+
+	@doc "管理员修改密码"
+	@handler resetPassword
+	post /resetPassword (AdminResetPasswordReq)
+
+	@doc "管理员更新数据"
+	@handler update
+	post /update (AdminUpdateReq)
+
+	@doc "管理员通过账号获取管理员列表"
+	@handler list
+	get /list (AdminListReq) returns (AdminListRes)
+
+	@doc "管理员删除管理账户"
+	@handler delete
+	post /delete (AdminDeleteReq)
+
+	@doc "管理员账户切换账号禁用状态"
+	@handler switchForbid
+	get /switchForbid (AdminForbidReq)
+
+	@doc "管理员关闭otp"
+	@handler closeOTP
+	post /closeOTP (CloseOTPReq)
+
+	@doc "管理员获取otp开启信息"
+	@handler openOTPInfo
+	get /openOTPInfo returns (OpenOTPInfo)
+
+	@doc "保存otp信息"
+	@handler saveOTP
+	post /saveOTP (SaveOTPReq)
+
+	@doc "关闭自己otp"
+	@handler closeOTPSelf
+	get /closeOTPSelf
+}
+
+import "types/tag.api"
+
+//---------------- tag managements -----------
+@server (
+	prefix:     api/v1/console/tag
+	group:      tags
+	middleware: Auth
+)
+service console-api {
+	@doc "新增标签"
+	@handler add
+	post /add (TagAddReq)
+
+	@doc "修改标签"
+	@handler update
+	post /update (TagUpdateReq)
+
+	@doc "删除标签"
+	@handler delete
+	delete /delete (TagDeleteReq)
+
+	@doc "标签列表"
+	@handler list
+	get /list (TagListReq) returns (TagListResp)
+
+	@doc "标签下拉框"
+	@handler option
+	get /option returns (TagOptionResp)
+}
+
+import "types/cert.api"
+
+//---------------- cert managements -----------
+@server (
+	prefix:     api/v1/console/cert
+	group:      cert
+	middleware: Auth
+)
+service console-api {
+	@doc "新增凭证"
+	@handler add
+	post /add (CertAddReq)
+
+	@doc "修改凭证"
+	@handler update
+	post /update (CertUpdateReq)
+
+	@doc "删除凭证"
+	@handler delete
+	delete /delete (CertDeleteReq)
+
+	@doc "凭证列表"
+	@handler list
+	get /list (CertListReq) returns (CertListResp)
+
+	@doc "凭证下拉框"
+	@handler option
+	get /option returns (CertOptionResp)
+}
+
+import "types/host.api"
+
+//---------------- host managements -----------
+@server (
+	prefix:     api/v1/console/host
+	group:      host
+	middleware: Auth
+)
+service console-api {
+	@doc "新增主机"
+	@handler add
+	post /add (HostAddReq)
+
+	@doc "修改主机"
+	@handler update
+	post /update (HostUpdateReq)
+
+	@doc "删除主机"
+	@handler delete
+	delete /delete (HostDeleteReq)
+
+	@doc "主机列表"
+	@handler list
+	get /list (HostListReq) returns (HostListResp)
+}
+
+import "types/ruleGroup.api"
+
+//---------------- rule group managements -----------
+@server (
+	prefix:     api/v1/console/rule/group
+	group:      group
+	middleware: Auth
+)
+service console-api {
+	@doc "新增规则分组"
+	@handler add
+	post /add (RuleGroupAddReq)
+
+	@doc "修改规则分组"
+	@handler update
+	post /update (RuleGroupUpdateReq)
+
+	@doc "删除规则分组"
+	@handler delete
+	delete /delete (RuleGroupDeleteReq)
+
+	@doc "规则分组列表"
+	@handler list
+	get /list (RuleGroupListReq) returns (RuleGroupListResp)
+
+	@doc "规则分组下拉框"
+	@handler option
+	get /option returns (RuleGroupOptionResp)
+}
+
+import "types/rule.api"
+
+//---------------- rule managements -----------
+@server (
+	prefix:     api/v1/console/rule
+	group:      rule
+	middleware: Auth
+)
+service console-api {
+	@doc "新增规则"
+	@handler add
+	post /add (RuleAddReq)
+
+	@doc "修改规则"
+	@handler update
+	post /update (RuleUpdateReq)
+
+	@doc "删除规则"
+	@handler delete
+	delete /delete (RuleDeleteReq)
+
+	@doc "规则列表"
+	@handler list
+	get /list (RuleListReq) returns (RuleListResp)
+}
+

@@ -1,0 +1,49 @@
+syntax = "v1"
+type(
+    TagAddReq {
+        Name string `json:"name"` // 标签名称 唯一
+        Desc string `json:"desc"` // 标签备注
+    }
+)
+
+type (
+    TagUpdateReq {
+        Id uint64 `json:"id"` // 标签ID
+        Name string `json:"name"` // 标签名称 唯一
+        Desc string `json:"desc"` // 标签备注
+    }
+)
+type (
+    TagDeleteReq {
+        Id uint64 `json:"email,optional"`    //标签ID
+    }
+)
+
+type (
+    TagListReq{
+        Page    int64   `form:"page,optional"`    // 当前页
+        Size    int64   `form:"size,optional"`    // 查询大小
+        Name    string `form:"name,optional"`    // 标签名称
+    }
+    TagListResp {
+        Total int64 `json:"total,optional"`     // 总数
+        List []*TagItem `json:"list,optional"`  // 列表
+    }
+    TagItem{
+        Id uint64  `json:"email,optional"`    //标签ID
+        Name string `json:"string,optional"`    //标签名称
+        Desc string `json:"desc"` // 标签备注
+        HostNum uint64 `json:"hostNum"`// 关联的主机数
+        RuleNum uint64 `json:"ruleNum"` // 关联的规则数
+        RuleGroupNum uint64 `json:"ruleGroupNum"` // 关联的规则集数
+    }
+)
+type (
+    TagOption{
+        Id uint64  `json:"id,optional"`    //标签ID
+        Name string `json:"string,optional"`    //标签名称
+    }
+    TagOptionResp {
+        Item []*TagOption `json:"item"`
+    }
+)

@@ -1,0 +1,23 @@
+syntax = "v1"
+
+type (
+	LoginReq {
+		Username  string `json:"username"`          // 账号
+		Password string `json:"password"`         // 密码
+		OTPCode  string `json:"otpCode,optional"` // 二次验证码
+	}
+
+	LoginResp {
+		Token string `json:"token"` // 登录令牌
+	}
+)
+
+type (
+	OTPStateReq {
+		Account string `form:"account"`
+	}
+
+	OTPStateResp {
+		Enable bool `json:"enable"`
+	}
+)

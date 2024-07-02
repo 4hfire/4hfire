@@ -1,0 +1,65 @@
+syntax = "v1"
+
+type (
+    RuleAddReq {
+        GroupId uint64 `json:"groupId"`
+        Tags []uint64 `json:"tags"`
+        Interface string `json:"interface"` // 网卡
+        SIP string `json:"sip"`
+        sPort string `json:"sport"`
+        DIP string `json:"dip"`
+        DPort string `json:"dport"`
+        Option string `json:"option"` // 操作 accept/drop
+        Enable bool `json:"enable"` // 启用
+        Desc string `json:"desc"` // 描述
+        Name string `json:"desc"` // 描述
+    }
+)
+type (
+    RuleUpdateReq {
+        Id uint64 `json:"id"`
+        GroupId uint64 `json:"groupId"`
+        Tags []uint64 `json:"tags"`
+        Interface string `json:"interface"` // 网卡
+        SIP string `json:"sip"`
+        sPort string `json:"sport"`
+        DIP string `json:"dip"`
+        DPort string `json:"dport"`
+        Option string `json:"option"` // 操作 accept/drop
+        Enable bool `json:"enable"` // 启用
+        Desc string `json:"desc"` // 描述
+        Name string `json:"desc"` // 描述
+    }
+)
+type (
+    RuleDeleteReq {
+        Id uint64 `json:"id"`
+    }
+)
+
+type (
+    RuleListReq{
+        Page    int64   `form:"page,optional"`    // 当前页
+        Size    int64   `form:"size,optional"`    // 查询大小
+        Name    string `form:"name,optional"`    // 规则名称
+        GroupId uint64 `form:"groupId,optional"`
+    }
+    RuleListResp {
+        Total int64 `json:"total,optional"`     // 总数
+        List []*RuleItem `json:"list,optional"`  // 列表
+    }
+    RuleItem{
+        Id uint64  `json:"id,optional"`    //规则ID
+        Name string `json:"name,optional"`    //规则名称
+        GroupId uint64 `json:"groupId"`
+        GroupName string `json:"name,optional"`    //规则名称
+        Enable bool `json:"enable"` // 启用
+        Interface string `json:"interface"` // 网卡
+        SIP string `json:"sip"`
+        sPort string `json:"sport"`
+        DIP string `json:"dip"`
+        DPort string `json:"dport"`
+        Option string `json:"option"` // 操作 accept/drop
+        Tags []uint64 `json:"tags"`
+    }
+)

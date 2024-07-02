@@ -1,0 +1,58 @@
+syntax = "v1"
+
+type(
+    CertAddReq {
+        Name string `json:"name"` // 凭证名称 唯一
+        Desc string `json:"desc"` // 凭证备注
+        Type uint8 `json:"type" `// 类型
+        Account string `json:"account"`
+        Password string `json:"password"`
+        Secret string `json:"secret"`
+    }
+)
+
+type(
+    CertUpdateReq {
+        Id uint64  `json:"id,optional"`    //凭证ID
+        Name string `json:"name"` // 凭证名称 唯一
+        Desc string `json:"desc"` // 凭证备注
+        Type uint8 `json:"type" `// 类型
+        Account string `json:"account"`
+        Password string `json:"password"`
+        Secret string `json:"secret"`
+    }
+)
+type(
+    CertDeleteReq {
+        Id uint64  `json:"id,optional"`    //凭证ID
+    }
+)
+
+type (
+    CertListReq{
+        Page    int64   `form:"page,optional"`    // 当前页
+        Size    int64   `form:"size,optional"`    // 查询大小
+        Name    string `form:"name,optional"`    // 凭证名称
+    }
+    CertListResp {
+        Total int64 `json:"total,optional"`     // 总数
+        List []*CertItem `json:"list,optional"`  // 列表
+    }
+    CertItem{
+        Id uint64  `json:"id,optional"`    //凭证ID
+        Name string `json:"name,optional"`    //凭证名称
+        Desc string `json:"desc"` // 凭证备注
+        Type uint8 `json:"type"` // 凭证类型 1/2 账号密码/密钥
+        Account string `json:"account"` // 账号
+        HostNum uint64 `json:"hostNum"`
+    }
+)
+type (
+    CertOption{
+        Id uint64  `json:"id,optional"`    //凭证ID
+        Name string `json:"string,optional"`    //凭证名称
+    }
+    CertOptionResp {
+        Item []*CertOption `json:"item"`
+    }
+)

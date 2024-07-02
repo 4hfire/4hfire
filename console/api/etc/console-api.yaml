@@ -1,0 +1,23 @@
+Name: console-api
+Host: 0.0.0.0
+Port: 24397
+Mode: dev
+
+AuthCfg:
+  AccessSecret: 561528c8-2d58-46df-570a-516bef5b7f89
+  AccessExpire: 86400
+  UserAccessExpire: 2592000
+
+RedisConf:
+  Host: 127.0.0.1:6379
+  Pass:
+  Type: node
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/4hfire?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai&multiStatements=true
+  MaxIdle: 10
+  MaxOpen: 10
+  Level: Info
+  DbCache:
+    - Host: 127.0.0.1:6379
+      Pass:

@@ -1,0 +1,179 @@
+syntax = "v1"
+
+type (
+	AdminAdduserReq {
+		Name 		  string `json:"name"`			//	姓名
+		Phone         string `json:"phone,optional"`    // 用户手机号
+		Account       string `json:"account"`  // 账号
+		Password      string `json:"password"` // 用户密码
+		Email          string `json:"email"`                        //邮箱
+	}
+	
+	AdminGetUserInfoReq {
+		Uid string `form:"uid,optional"` // 用户唯一ID
+	}
+
+	AdminGetUserInfoResp {
+		Uid                    string `gorm:"primaryKey" json:"uid,optional"`                  // 用户唯一ID
+		Phone                  string `json:"phone,optional"`                                  // 用户手机号
+		Name               string `json:"name,optional"`                               // 昵称
+		Account                string `json:"account,optional"`                                // 账号/手机号/邮箱/
+		Avatar                 string `json:"avatar,optional"   gorm:"column:newAvatar"`                                 // 头像路径
+		LoginTimes             int64  `json:"loginTimes,optional"`                             //登录次数
+		LastLoginTime          int64  `json:"lastLoginTime,optional"`                          //最后登录时间
+		CreateTime             int64  `json:"createTime,optional"`                             //注册时间
+		UpdateTime             int64  `json:"updateTime,optional"`                             //更新时间
+		Email                   string `json:"email,optional"`                                   //邮箱
+	}
+
+	AdminResetPasswordReq {
+		Uid           string `gorm:"primaryKey" json:"uid"` // 被更新用户的id
+		NewPassword   string `json:"newPassword"`           //新密码
+		ReNewPassword string `json:"reNewPassword"`         //确认密码
+	}
+
+	AdminListReq {
+		Page    int64   `form:"page,optional"`    // 当前页
+		Size    int64   `form:"size,optional"`    // 查询大小
+		Account string `form:"account,optional"` // 待查看的用户账号
+		Name    string `form:"name,optional"`    // 用户姓名
+		Phone   string `form:"phone,optional"`   // 用户手机号
+	}
+
+
+	AdminItem {
+		Uid           string `gorm:"primaryKey" json:"uid,optional"` // 用户唯一ID
+		Avatar        string `json:"avatar,optional"`                // 头像路径
+		Phone         string `json:"phone,optional"`                 // 用户手机号
+		Account       string `json:"account,optional"`               // 账户
+		CreateTime    int64  `json:"createTime,optional"`            // 注册时间
+		IsDisable     int64  `json:"isDisable,optional"`             // 是否禁用，0正常，1禁用
+		UpdateTime    int64  `json:"updateTime,optional"`            // 更新时间
+		Email          string `json:"email,optional"`                  // 邮箱
+		Name          string `json:"name,optional"`                  // 姓名
+        Otp           int64  `json:"otp"`                            // 二次验证状态 1开启 2关闭
+	}
+
+	AdminListRes {
+		Total int64   `json:"total,optional"` // 总数
+		List  []*AdminItem `json:"list,optional"`  // 列表
+	}
+	
+	AdminUserInfoReq {
+		Id uint64 `json:"id,optional"` // 用户ID
+	}
+	
+	AdminUserInfoRes {
+		Account  string `json:"account,optional"`  // 账号
+		Name string `json:"nickname,optional"` // 用户姓名
+		Mobile   string `json:"mobile,optional"`   // 手机号
+	}
+
+	AdminGetByAccountReq {
+		Account string `form:"account,optional"` // 姓名，账号，或者手机号
+	}
+
+	AdminGetByAccountRes {
+		Uid           string `gorm:"primaryKey" json:"uid,optional"` // 用户唯一ID
+		Phone         string `json:"phone,optional"`                 // 用户手机号
+		Account       string `json:"account,optional"`               // 账户
+		CreateTime    int64  `json:"createTime,optional"`            //注册时间
+		IsDisable     int64   `json:"isDisable,optional"`             //是否禁用，0正常，1禁用
+		UpdateTime    int64  `json:"updateTime,optional"`            //更新时间
+		Email          string `json:"email,optional"`                  //邮箱
+	}
+
+	AdminDeleteReq {
+		Uid        string `json:"uid"` // 用户唯一ID
+	}
+
+	AdminDeleteUserReq {
+		Uid        string `json:"uid,optional"` // 删除用户id
+	}
+
+	AdminForbiddenReq {
+		Uid        string `json:"uid,optional"` // 用户唯一ID
+		ActionType int64   `json:"actionType,optional"`            //是否禁用，0正常，1禁用
+	}
+
+	AdminInfoResp {
+		Name          string `json:"name,optional"`                  //姓名
+		Uid           string `gorm:"primaryKey" json:"uid,optional"` // 用户唯一ID
+		Phone         string `json:"phone,optional"`                 // 用户手机号
+		Account       string `json:"account,optional"`               // 账户
+		Avatar        string `json:"avatar,optional"`                // 头像路径
+		CreateTime    int64  `json:"createTime,optional"`            //注册时间
+		UpdateTime    int64  `json:"updateTime,optional"`            //更新时间
+		Email         string `json:"email,optional"`                  //邮箱
+	}
+	AdminLoadImages {
+		Images []string `form:"images,optional"`//上传图片切片
+	}
+
+	AdminUserListReq  {
+		Page                  int64   `form:"page,optional"`                 // 当前页
+		Size                  int64   `form:"size,optional"`                 // 查询大小
+		Account               string `form:"account,optional"`               // 待查看的用户账号
+		IsDisable             int64   `form:"isDisable,optional"`            // 是否禁用，0正常，1禁用
+		StartTime             int64  `form:"startTime,optional"`             // 注册时间范围，开始时间
+		EndTime               int64  `form:"endTime,optional"`               // 注册时间范围，结束时间
+	}
+
+	AdminUserListItme  {
+		Uid           string `json:"uid,optional"`      // 用户唯一ID
+		Name       string `json:"name"` // 名称
+		Account       string `json:"account"` // 账号/手机号/邮箱/
+		CreateTime    int64  `json:"createTime,optional"`                 //注册时间
+		IsDisable     int64   `json:"isDisable,optional"`                  //是否禁用，0正常，1禁用
+		UpdateTime    int64  `json:"updateTime,optional"`                 //更新时间
+	}
+
+	AdminUserListRes {
+		Total int64       `json:"total,optional"` // 总数
+		List  []*AdminUserListItme `json:"list,optional"`  // 列表
+	}
+
+	AdminDownImage {
+		ImagePath	 string `form:"imagePath,optional"` //下载图片路径
+	}
+	AdminByUidsGetUserReq {
+		Uids string `json:"uids"` //用户uid，
+	}
+
+	AdminByUidsGetUserResp {
+		Uids []string `json:"uids"` //用户uid，
+	}
+
+	AdminByPhonesGetUserReq {
+		Phones string `json:"phones"`	//	用户phone
+	}
+
+	AdminByPhonesGetUserResp {
+		Phones []string `json:"phones"`	//	用户phone
+	}
+
+	AdminUpdateReq {
+		Uid 		  string `json:"uid"`									// admin用户uid
+		Phone         string `json:"phone,optional"`    					// 用户手机号
+		Email          string `json:"email,optional"`                         // 邮箱
+		Password	  string `json:"password,optional"`						// password 可选
+		Name		  string `json:"name,optional"`							//	姓名
+	}
+
+	AdminForbidReq {
+		Uid string `form:"uid"`
+	}
+
+	OpenOTPInfo {
+        Data string `json:"data"`
+    }
+
+    SaveOTPReq {
+        Code string `json:"code"`
+    }
+
+	CloseOTPReq {
+		UID string `json:"uid"`
+	}
+)
+
